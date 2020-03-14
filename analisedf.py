@@ -18,13 +18,14 @@ contasmes = contasmes.reset_index()
 contasmes = pd.merge(contasmes, dfcontas, how='left', on='conta')
 contasmes = contasmes[contasmes['tipo'] == 'D']
 contasmes = contasmes.rename(columns={'valor': 'real'})
-contasmes = contasmes.drop(['tipo'], axis=1)
+# contasmes = contasmes.drop(['tipo'], axis=1)
 
 contasprevistomes = dfcontasprevisto.groupby(['ano', 'mes', 'conta']).sum()['valorprevisto']
 contasprevistomes = contasprevistomes.reset_index()
 contasprevistomes = contasprevistomes.rename(columns={'valorprevisto': 'previsto'})
 
 contasmesfinal = pd.merge(contasmes, contasprevistomes, how='outer', on=['ano', 'mes', 'conta'])
+contasmesfinal = contasmesfinal[contasmesfinal['tipo'] == 'D']
 contasmesfinal = contasmesfinal.fillna(0)
 contasmesfinal['delta'] = (contasmesfinal.real - contasmesfinal.previsto) * -1
 contasmesfinal['realinv'] = contasmesfinal.real * -1
@@ -39,7 +40,7 @@ htmlresumo = resumomes.style.to_excel('resumomes.xlsx', engine='openpyxl')
 # htmlresult.get('file:///C:/Users/carlo/PycharmProjects/fcpandas/htmlresumo.html')
 
 paretomes = contasmesfinal[contasmesfinal['real'] != 0].loc[2020, 3]['realinv'].sort_values()
-plt.figure(figsize=(10, 5))
+# plt.figure(figsize=(10, 5))
 paretomes.plot.barh(x=paretomes.index, y=paretomes.values)
 plt.subplots_adjust(left=0.16)
 plt.ylabel('TIPO DE DESPESA')
@@ -62,7 +63,7 @@ mng.window.state('zoomed')
 plt.show()
 plt.close()
 
-sdatas = pd.Series(pd.date_range('20200101', periods=69))
+sdatas = pd.Series(pd.date_range('20200301', periods=31))
 dia = sdatas.dt.day
 mes = sdatas.dt.month
 ano = sdatas.dt.year
