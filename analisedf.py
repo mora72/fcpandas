@@ -74,7 +74,7 @@ despesasdia = despesasdia[(despesasdia['tipo'] == 'D') & (despesasdia['meio'] !=
 despesasdia['valorinv'] = despesasdia.valor * -1
 despesasdia = despesasdia.groupby(['ano', 'mes', 'dia']).sum()['valorinv']
 despesasdia = despesasdia.reset_index()
-despesasdia = pd.merge(despesasdia, dfdatas, how='outer', on=['ano', 'mes', 'dia'])
+despesasdia = pd.merge(despesasdia, dfdatas, how='right', on=['ano', 'mes', 'dia'])
 despesasdia = despesasdia.fillna(0)
 # plt.figure(figsize=(8, 3))
 despesasdia.plot(x='data', y='valorinv')
