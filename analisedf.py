@@ -32,12 +32,13 @@ contasmesfinal['realinv'] = contasmesfinal.real * -1
 contasmesfinal = contasmesfinal.set_index(['ano', 'mes', 'conta'])
 
 resumomes = contasmesfinal.loc[2020, 3].sort_values('conta')
-htmlresumo = resumomes.style.to_excel('resumomes.xlsx', engine='openpyxl')
+htmlresumo = resumomes.style.to_excel('resumomesexcel/resumomes.xlsx', engine='openpyxl')
+
 # htmlresumo = resumomes.style.render()
 # with open('htmlresumo.html', 'w') as file:
 #    file.write(htmlresumo)
 # htmlresult = webdriver.Firefox()
-# htmlresult.get('file:///C:/Users/carlo/PycharmProjects/fcpandas/htmlresumo.html')
+# htmlresult.get('file:///C:/Users/carlo/PycharmProjects/fcpandas/html/htmlresumo.html')
 
 paretomes = contasmesfinal[contasmesfinal['real'] != 0].loc[2020, 3]['realinv'].sort_values()
 # plt.figure(figsize=(10, 5))
