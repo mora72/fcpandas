@@ -43,7 +43,8 @@ def abrearquivodf(nomedf):
                    'dfcontasprevisto': '/Users/carlo/PycharmProjects/fcpandas/dfcontasprevisto.pck1',
                    'dfcontas': '/Users/carlo/PycharmProjects/fcpandas/dfcontas.pck1',
                    'dfinvest': '/Users/carlo/PycharmProjects/fcpandas/dfinvest.pck1',
-                   'dfmesano': '/Users/carlo/PycharmProjects/fcpandas/dfmesano.pck1'
+                   'dfmesano': '/Users/carlo/PycharmProjects/fcpandas/dfmesano.pck1',
+                   'dfemprest': '/Users/carlo/PycharmProjects/fcpandas/dfemprest.pck1',
                    }
     arqdf = Arquivodf(listaarqsdf[nomedf])
     return arqdf.ler()
@@ -55,7 +56,8 @@ def gravaarquivoqdf(nomedf, df):
                    'dfcontasprevisto': '/Users/carlo/PycharmProjects/fcpandas/dfcontasprevisto.pck1',
                    'dfcontas': '/Users/carlo/PycharmProjects/fcpandas/dfcontas.pck1',
                    'dfinvest': '/Users/carlo/PycharmProjects/fcpandas/dfinvest.pck1',
-                   'dfmesano': '/Users/carlo/PycharmProjects/fcpandas/dfmesano.pck1'
+                   'dfmesano': '/Users/carlo/PycharmProjects/fcpandas/dfmesano.pck1',
+                   'dfemprest': '/Users/carlo/PycharmProjects/fcpandas/dfemprest.pck1',
                    }
     arqdf = Arquivodf(listaarqsdf[nomedf])
     return arqdf.gravar(df)

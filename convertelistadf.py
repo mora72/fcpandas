@@ -25,3 +25,7 @@ gravaarquivoqdf('dfinvest', dfinvest)
 basemesano = abrearquivo('basemesano')
 dfmesano = pd.DataFrame(basemesano)
 gravaarquivoqdf('dfmesano', dfmesano)
+
+listaemprest = abrearquivo('listaemprest')
+dfemprest = pd.DataFrame(listaemprest)
+gravaarquivoqdf('dfemprest', dfemprest)
